@@ -13,6 +13,7 @@ gulp.task('default', () => {
 		warning_level: 'VERBOSE',
 		language_in: 'ECMASCRIPT_NEXT',
 		language_out: 'ECMASCRIPT5_STRICT',
+		dependency_mode: 'STRICT',
 		output_wrapper: '(function(){\n%output%\n}).call(this)',
 		js_output_file: 'output.min.js'
 	})

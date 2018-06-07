@@ -1,5 +1,5 @@
 import {expect} from 'chai'
-import {pow} from './calc';
+import {pow} from './calc.js';
 
 describe("calc test", () => {
 	it('should pow', () => {

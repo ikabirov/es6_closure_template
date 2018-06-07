@@ -1,1 +1,0 @@
-# es6_closure_template

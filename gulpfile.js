@@ -2,7 +2,7 @@
 
 const gulp = require('gulp');
 const path = require('path');
-
+const concatCss = require('gulp-concat-css');
 const closureCompiler = require('google-closure-compiler').gulp();
 
 const defaultSettings = {
@@ -16,7 +16,7 @@ const defaultSettings = {
 	conformance_configs: [path.join(__dirname, './conformance/strict.textproto')],
 };
 
-gulp.task('default', () => {
+gulp.task('default', ['css', 'copy_resources'], () => {
 	return closureCompiler(Object.assign({}, defaultSettings, {
 		entry_point: path.join(__dirname, './src/index.js'),
 		js_output_file: 'output.min.js'
@@ -31,5 +31,15 @@ gulp.task('check', () => {
 		checks_only: true,
 	}))
 	.src() // needed to force the plugin to run without gulp.src
-	.pipe(gulp.dest('./dist/js'));
+});
+
+gulp.task('css', function () {
+	return gulp.src('./css/index.css')
+		.pipe(concatCss("styles/bundle.css"))
+		.pipe(gulp.dest('dist/'));
+});
+
+gulp.task('copy_resources', function () {
+	return gulp.src('./css/**/*.jpg')
+		.pipe(gulp.dest('dist/'));
 });

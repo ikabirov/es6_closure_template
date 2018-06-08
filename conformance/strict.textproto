@@ -1,0 +1,5 @@
+requirement: {
+  type: CUSTOM
+  java_class: 'com.google.javascript.jscomp.ConformanceRules$BanNullDeref'
+  error_message: 'BanNullDeref'
+}

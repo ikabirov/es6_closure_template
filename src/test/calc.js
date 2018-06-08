@@ -4,7 +4,8 @@
  * @return {number}
  */
 function pow(a, b) {
-	return Math.pow(a, b);
+	const c = 1;
+	return Math.pow(a, b, c);
 }
 
 export {pow};
